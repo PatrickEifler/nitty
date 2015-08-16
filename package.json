@@ -1,0 +1,23 @@
+{
+  "name": "nitty-gritty",
+  "version": "1.0.0",
+  "description": "A package providing helpers for client-side restful api implementations",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src/",
+    "test": "mocha test/ --recursive --reporter dot"
+  },
+  "author": "Patrick Eifler",
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.4",
+    "lodash": "~3.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^0.21.0",
+    "jsdom": "~3.0.0",
+    "chai": "*",
+    "mocha": "~2.2.4",
+    "sinon": "^1.14.1"
+  }
+}
