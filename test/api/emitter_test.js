@@ -1,6 +1,5 @@
 var jsDom = require("jsdom");
 GLOBAL.window = jsDom.jsdom().parentWindow;
-
 var assert = require("assert");
 var emitter = require("../../src/api/emitter");
 

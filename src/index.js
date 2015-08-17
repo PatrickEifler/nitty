@@ -6,7 +6,13 @@
       out.warn("OMG!");
 */
 
+// base
+
+exports.base_ctrl = require("./base/ctrl");
+
+
 // utils
+
 exports.ajax_loader = require("./utils/ajax_loader");
 exports.abbreviator = require("./utils/abbreviator");
 
@@ -24,10 +30,6 @@ exports.query_builder = require("./query/query_builder");
 exports.query_cleaner = require("./query/query_cleaner");
 exports.querier = require("./query/querier");
 exports.query_base_ctrl = require("./query/query_base_ctrl");
-
-// controllers
-
-exports.base_ctrl = require("./controllers/base_ctrl");
 
 
 // api

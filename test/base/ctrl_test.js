@@ -1,11 +1,11 @@
 var assert = require("chai").assert;
 var sinon = require("sinon");
 var dispatcher = require("../../src/patterns/dispatcher/event_dispatcher");
-var BaseCtrl = require("../../src/controllers/base_ctrl");
+var Ctrl = require("../../src/base/ctrl");
 
-describe("Base Ctrl Test", function () {
+describe("Ctrl Test", function () {
   beforeEach(function() {
-    var mediator = {
+    var context = {
       set: function(data) {
         return data;
       }
@@ -24,10 +24,10 @@ describe("Base Ctrl Test", function () {
     };
 
     sinon.spy(api, "onUpdateDo");
-    sinon.spy(mediator, "set");
+    sinon.spy(context, "set");
 
-    this.ctrlInstance = BaseCtrl.createInstance(
-      api, updatedSignal, mediator, dataMapper
+    this.ctrlInstance = Ctrl.createInstance(
+      api, updatedSignal, context, dataMapper
     );
 
     sinon.spy(this.ctrlInstance, "dataMapper");

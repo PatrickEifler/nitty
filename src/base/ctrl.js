@@ -1,11 +1,9 @@
-"use strict";
-
-var signals = require("../index").signals,
+var signals = require("../patterns/signals/signals"),
     L = require("lodash");
 
-var BaseCtrl = (function() {
+var Ctrl = (function() {
 
-  var _BaseCtrl = function(api, signal, context, dataMapper) {
+  var _Ctrl = function(api, signal, context, dataMapper) {
 
     /*
       * Base Ctrl - Constructor
@@ -34,7 +32,7 @@ var BaseCtrl = (function() {
     this.registerToApiUpdateStream();
   };
 
-  _BaseCtrl.prototype = {
+  _Ctrl.prototype = {
     version: 1.0,
 
     initializeSignal: function() {
@@ -72,9 +70,9 @@ var BaseCtrl = (function() {
 
   };
 
-  return _BaseCtrl;
+  return _Ctrl;
 }());
 
 exports.createInstance = function(api, signal, context, dataMapper) {
-  return new BaseCtrl(api, signal, context, dataMapper);
+  return new Ctrl(api, signal, context, dataMapper);
 };

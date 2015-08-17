@@ -1,7 +1,6 @@
 var jsDom = require("jsdom");
 GLOBAL.window = jsDom.jsdom().parentWindow;
 
-
 var assert = require("chai").assert,
     sinon = require("sinon"),
     ApiScoper = require("../../src/api/scoper").Class,
@@ -12,15 +11,10 @@ var assert = require("chai").assert,
 describe("Api Scoper Test", function(){
 
   beforeEach(function() {
-    neoJquery.support.cors = true;
-    neoJquery.ajaxSettings.xhr = function () {
-      return new XMLHttpRequest;
-    }
     sinon.spy(api, "send");
   });
 
   afterEach(function() {
-    neoJquery.support.cors = false;
     api.send.restore();
   });
 
