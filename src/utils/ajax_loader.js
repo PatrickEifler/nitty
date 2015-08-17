@@ -1,5 +1,3 @@
-"use strict";
-
 var $ = require("jquery"),
     L = require("lodash");
 

@@ -1,20 +1,20 @@
 /**
   Example:
-
-      var out = require("commons").out;
-      out.log("Hello World!");
-      out.warn("OMG!");
+    var ctrl = require("nitty").ctrl;
 */
 
 // base
 
-exports.base_ctrl = require("./base/ctrl");
+exports.ctrl = require("./base/ctrl");
+exports.context = require("./base/context");
+exports.api = require("./base/api");
+exports.presenter = require("./base/presenter");
 
+// api
 
-// utils
-
-exports.ajax_loader = require("./utils/ajax_loader");
-exports.abbreviator = require("./utils/abbreviator");
+exports.api_event = require("./api/event");
+exports.api_scoper = require("./api/scoper");
+exports.emitter = require("./api/emitter");
 
 // patterns
 
@@ -32,8 +32,7 @@ exports.querier = require("./query/querier");
 exports.query_base_ctrl = require("./query/query_base_ctrl");
 
 
-// api
+// utils
 
-exports.api_event = require("./api/event");
-exports.api_scoper = require("./api/scoper");
-exports.emitter = require("./api/emitter");
+exports.ajax_loader = require("./utils/ajax_loader");
+exports.abbreviator = require("./utils/abbreviator");

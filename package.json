@@ -1,5 +1,5 @@
 {
-  "name": "nitty-gritty",
+  "name": "nitty",
   "version": "1.0.0",
   "description": "A package providing helpers for client-side restful api implementations",
   "main": "src/index.js",

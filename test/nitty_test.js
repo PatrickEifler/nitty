@@ -18,7 +18,7 @@ describe('Nitty Gritty Test', function() {
     assert.notEqual(null, ng.querier);
     assert.notEqual(null, ng.query_base_ctrl);
 
-    assert.notEqual(null, ng.base_ctrl);
+    assert.notEqual(null, ng.ctrl);
 
     assert.notEqual(null, ng.api_event);
     assert.notEqual(null, ng.api_scoper);
