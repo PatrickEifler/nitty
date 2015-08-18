@@ -1,7 +1,7 @@
 "use strict";
 
 var L = require("lodash"),
-    Subject = require("../main").observer_subject,
+    ObserverSubject = require("../main").observer_subject,
     singleton_factory = require("../main").singleton;
 
 var Query = (function() {
@@ -26,16 +26,16 @@ var Query = (function() {
       };
 
   QueryConstr = function() {
-    this.subject = Subject.init();
+    this.observerSubject = ObserverSubject.createInstance();
     this.query = _query;
   };
 
   QueryConstr.prototype.addObserver = function(newObserver) {
-    this.subject.observe(newObserver);
+    this.observerSubject.addObserver(newObserver);
   };
 
   QueryConstr.prototype.removeObserver = function(deleteObserver) {
-    this.subject.unobserve(deleteObserver);
+    this.observerSubject.removeObserver(deleteObserver);
   };
 
   QueryConstr.prototype.fetchQuery = function(query) {
@@ -60,7 +60,7 @@ var Query = (function() {
       );
 
       this.query = _updated_query;
-      this.subject.notify(_updated_query);
+      this.observerSubject.notifyObservers(_updated_query);
 
     }
   };

@@ -1,16 +1,3 @@
-/**
-  * Object that represents a binding between a Signal and a listener function.
-  * <br />- <strong>This is an internal constructor and shouldn't be called by regular users.</strong>
-  * @constructor
-  * @internal
-  * @name SignalBinding
-  * @param {Signal} signal Reference to Signal object that listener is currently bound to.
-  * @param {Function} listener Handler function bound to the signal.
-  * @param {boolean} isOnce If binding should be executed just once.
-  * @param {Object} [listenerContext] Context on which listener will be executed (object that should represent the `this` variable inside listener function).
-  * @param {Number} [priority] The priority level of the event listener. (default = 0).
-*/
-
 var _SignalBinding = (function() {
   var _SignalBindingConstr = function(signal, listener, isOnce, listenerContext, priority) {
     /**

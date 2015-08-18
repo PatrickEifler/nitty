@@ -14,11 +14,11 @@ var Subject = ( function() {
     this._list = [];
   };
 
-  Subject.prototype.observe = function observeObject( obj ) {
+  Subject.prototype.addObserver = function ( obj ) {
     this._list.push( obj );
   };
 
-  Subject.prototype.unobserve = function unobserveObject( obj ) {
+  Subject.prototype.removeObserver = function ( obj ) {
     for( var i = 0, len = this._list.length; i < len; i++ ) {
       if( this._list[ i ] === obj ) {
         this._list.splice( i, 1 );
@@ -28,7 +28,7 @@ var Subject = ( function() {
     return false;
   };
 
-  Subject.prototype.notify = function notifyObservers() {
+  Subject.prototype.notifyObservers = function () {
     var args = Array.prototype.slice.call( arguments, 0 );
     for( var i = 0, len = this._list.length; i < len; i++ ) {
       this._list[ i ].update.apply( null, args );
@@ -39,6 +39,6 @@ var Subject = ( function() {
 
 }());
 
-module.exports.init = function() {
+module.exports.createInstance = function() {
   return new Subject();
 };

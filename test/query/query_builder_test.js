@@ -5,10 +5,17 @@ var QueryBuilder = require("../../src/query/query_builder");
 var QueryBaseCtrl = require("../../src/query/query_base_ctrl");
 
 describe('Query', function() {
+
+  it("delegates observer subject functions", function () {
+    var queryBuilder = QueryBuilder.getInstance();
+    assert.property(queryBuilder, "addObserver");
+    assert.property(queryBuilder, "removeObserver");
+  });
+
   it('fetches the query and notifies its observer if updated', function() {
     var apiMock = {
       reload: function(query) {
-        return query; //send reload
+        return query;
       }
     };
     var updateEvent = "UPDATE";
@@ -30,7 +37,7 @@ describe('Query', function() {
     queryBuilder.fetchQuery(queryMock);
 
      //The observer is notified and processes the query
-     //only once because the query is only updated on the first call
+     //only once because the query is only updated if there is a diff
     sinon.assert.calledOnce(queryCtrl.processQuery);
 
     queryCtrl.processQuery.restore();
