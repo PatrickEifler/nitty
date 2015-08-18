@@ -60,7 +60,7 @@ var Signal = (function () {
 
       var i = this._indexOfListener(listener, context);
       if (i !== -1) {
-        this._bindings[i]._destroy(); //no reason to a SignalBinding exist if it isn't attached to a signal
+        this._bindings[i]._destroy();
         this._bindings.splice(i, 1);
       }
       return listener;
@@ -82,10 +82,6 @@ var Signal = (function () {
       this._shouldPropagate = false;
     },
 
-    /**
-    * Dispatch/Broadcast Signal to all listeners added to the queue.
-    * @param {...*} [params] Parameters that should be passed to each handler.
-    */
     dispatch : function (params) {
       if (! this.active) {
         return;
@@ -100,30 +96,19 @@ var Signal = (function () {
       }
 
       if (! n) {
-        //should come after memorize
         return;
       }
 
-      bindings = this._bindings.slice(); //clone array in case add/remove items during dispatch
-      this._shouldPropagate = true; //in case `halt` was called before dispatch or during the previous dispatch.
+      bindings = this._bindings.slice();
+      this._shouldPropagate = true;
 
-      //execute all callbacks until end of the list or until a callback returns `false` or stops propagation
-      //reverse loop since listeners with higher priority will be added at the end of the list
       do { n--; } while (bindings[n] && this._shouldPropagate && bindings[n].execute(paramsArr) !== false);
     },
 
-    /**
-   * Forget memorized arguments.
-   * @see Signal.memorize
-   */
     forget : function(){
       this._prevParams = null;
     },
 
-    /**
-    * Remove all bindings from signal and destroy any reference to external objects (destroy Signal object).
-    * <p><strong>IMPORTANT:</strong> calling any method on the signal instance after calling dispose will throw errors.</p>
-    */
     dispose : function () {
       this.removeAll();
       delete this._bindings;
@@ -134,7 +119,7 @@ var Signal = (function () {
       return '[Signal active:'+ this.active +' numListeners:'+ this.getNumListeners() +']';
     },
 
-    // @private
+    // private
 
     _shouldPropagate: true,
 
@@ -170,7 +155,6 @@ var Signal = (function () {
     },
 
     _addBinding : function (binding) {
-      //simplified insertion sort
       var n = this._bindings.length;
       do { --n; } while (this._bindings[n] && binding._priority <= this._bindings[n]._priority);
       this._bindings.splice(n + 1, 0, binding);

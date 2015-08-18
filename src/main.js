@@ -22,7 +22,6 @@ exports.singleton = require("./factory/singleton_factory");
 exports.observer_subject = require("./patterns/observer/subject");
 exports.dispatcher = require("./patterns/dispatcher/event_dispatcher");
 exports.signals = require("./patterns/signals/signals");
-exports.object_creator = require("./patterns/object/object_create_polyfill");
 
 // query
 
