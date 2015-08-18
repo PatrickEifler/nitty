@@ -1,8 +1,8 @@
 "use strict";
 
 var L = require("lodash"),
-    Subject = require("../index").observer_subject,
-    singleton_factory = require("../index").singleton;
+    Subject = require("../main").observer_subject,
+    singleton_factory = require("../main").singleton;
 
 var Query = (function() {
   var QueryConstr,

@@ -4,7 +4,7 @@ var Backbone = require("backbone"),
     $ = require("jquery"),
     L = require("lodash"),
     EVENT = require("./event"),
-    ajax_loader = require("../index").ajax_loader,
+    ajax_loader = require("../main").ajax_loader,
     timeout;
 
 L.extend(exports, Backbone.Events);

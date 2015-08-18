@@ -1,6 +1,6 @@
 var assert = require("assert");
 
-var ng = require("../src/index");
+var ng = require("../src/main");
 
 describe('Nitty Gritty Test', function() {
   it('should return a map of services', function() {
