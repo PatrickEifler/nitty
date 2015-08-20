@@ -1,5 +1,3 @@
-"use strict";
-
 var L = require("lodash"),
     ObserverSubject = require("../main").observer_subject,
     singleton_factory = require("../main").singleton;

@@ -1,5 +1,3 @@
-"use strict";
-
 var Querier = (function () {
   var Q,
       _type,

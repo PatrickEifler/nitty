@@ -1,5 +1,3 @@
-"use strict";
-
 var L = require("lodash");
 
 var removeEmptyKeys = function(query) {

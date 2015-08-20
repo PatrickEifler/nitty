@@ -1,5 +1,3 @@
-"use strict";
-
 var L = require("lodash"),
     dispatcher = require("../main").dispatcher,
     Query = require("../main").query_builder;
