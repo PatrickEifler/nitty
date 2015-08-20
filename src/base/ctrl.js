@@ -39,7 +39,7 @@ var Ctrl = (function() {
       var _self           = this,
           _context        = _self.context,
           _registerSignal = function(callback, context) {
-            _self.signal.add(callback, context);
+            _self.signal.addListener(callback, context);
           };
 
       _self.signal   = signals.initSignal();

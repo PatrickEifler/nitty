@@ -48,8 +48,8 @@ describe("Ctrl Test", function () {
   it("initializes the given signal with given listener", function() {
     var _listener = this.ctrlInstance.context.set,
         _context = this.ctrlInstance.context;
-    assert.strictEqual(this.ctrlInstance.signal.getNumListeners(),1);
-    assert.isTrue(this.ctrlInstance.signal.has(_listener, _context));
+    assert.strictEqual(this.ctrlInstance.signal.getNumberOfListeners(),1);
+    assert.isTrue(this.ctrlInstance.signal.hasListener(_listener, _context));
   });
 
   it("registers to update stream and dispatches signal", function() {
