@@ -8,30 +8,6 @@ var eventDispatcher = require("../../src/patterns/dispatcher/event_dispatcher");
 
 describe('Event Dispatcher Test', function() {
 
-  it('should export self to target', function() {
-    var testmodule = {};
-    var my_dispatcher = require("../../src/patterns/dispatcher/event_dispatcher").initialize();
-    var callback = sinon.spy();
-    var data = {data : "mydata"};
-    var Event = "myEvent";
-
-    my_dispatcher.export_self_to(testmodule);
-
-    expect(testmodule).to.respondTo('listen');
-    expect(testmodule).to.respondTo('unlisten');
-
-    expect(testmodule).to.respondTo('dispatch');
-
-    testmodule.listen(Event, callback);
-
-    sinon.assert.notCalled(callback);
-
-    testmodule.dispatch(Event, data);
-
-    sinon.assert.called(callback);
-    sinon.assert.calledWith(callback, data);
-  });
-
   it('should responds to dispatcher methods', function() {
     expect(eventDispatcher).to.respondTo('listen');
     expect(eventDispatcher).to.respondTo('dispatch');
