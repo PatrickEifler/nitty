@@ -1,6 +1,6 @@
 /**
   Example:
-    var ctrl = require("nitty").ctrl;
+    var Ctrl = require("nitty").ctrl;
 */
 
 // base
@@ -33,5 +33,5 @@ exports.query_base_ctrl = require("./query/query_base_ctrl");
 
 // utils
 
-exports.ajax_loader = require("./utils/ajax_loader");
+exports.loader = require("./utils/loader");
 exports.abbreviator = require("./utils/abbreviator");

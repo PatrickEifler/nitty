@@ -2,7 +2,7 @@
   "name": "nitty",
   "version": "1.0.0",
   "description": "A package providing helpers for client-side restful api implementations",
-  "main": "src/main.js",
+  "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/",
     "test": "mocha test/ --recursive --reporter dot"

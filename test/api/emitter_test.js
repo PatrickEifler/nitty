@@ -4,8 +4,7 @@ GLOBAL.document = jsDom.jsdom.document;
 var assert = require("chai").assert;
 
 var emitter = require("../../src/api/emitter");
-var loader = require("../../src/utils/ajax_loader");
-
+var loader = require("../../src/utils/loader");
 var $ = require("jquery");
 
 describe("Emitter Test", function(){
@@ -16,5 +15,9 @@ describe("Emitter Test", function(){
 
     assert.lengthOf($("body").find(".loader"), 1);
     assert.lengthOf($("body").find(".lock-ui"), 1);
+
+    $("body").find(".loader").remove();
+    $("body").find(".lock-ui").remove();
+
   });
 });

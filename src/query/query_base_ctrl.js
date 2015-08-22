@@ -1,6 +1,6 @@
 var L = require("lodash"),
-    dispatcher = require("../main").dispatcher,
-    Query = require("../main").query_builder;
+    dispatcher = require("../index").dispatcher,
+    Query = require("../index").query_builder;
 
 var QueryBaseCtrl = (function() {
   var _QueryBaseCtrl;

@@ -1,6 +1,6 @@
 var L = require("lodash"),
-    ObserverSubject = require("../main").observer_subject,
-    singleton_factory = require("../main").singleton;
+    ObserverSubject = require("../index").observer_subject,
+    singleton_factory = require("../index").singleton;
 
 var Query = (function() {
   var QueryConstr,
