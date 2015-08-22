@@ -7,6 +7,10 @@
     "email": "patrickeifler@gmail.com"
   },
   "license": "GPL-1.0+",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PatrickEifler/nitty.git"
+  },
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/",
