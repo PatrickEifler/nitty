@@ -2,7 +2,7 @@ var Backbone = require("backbone"),
     $ = require("jquery"),
     L = require("lodash"),
     EVENT = require("./event"),
-    ajax_loader = require("../index").loader,
+    loader = require("../index").loader,
     timeout;
 
 L.extend(exports, Backbone.Events);
@@ -15,22 +15,24 @@ exports.send = function(action, args) {
       payload: JSON.stringify(args)
     },
     beforeSend: function() {
-      ajax_loader.lockUi();
+      loader.lockUi();
       if(timeout) { clearTimeout(timeout); }
+
+      //only show loader if request takes longer than 500ms
       timeout = setTimeout(function() {
-        ajax_loader.showLoader();
+        loader.showLoader();
       }, 500);
     },
     success: function(result, textStatus, xhr) {
       if(timeout) { clearTimeout(timeout); }
-      ajax_loader.unlockUi();
-      ajax_loader.removeLoader();
+      loader.unlockUi();
+      loader.removeLoader();
       exports.trigger(EVENT.success, result, textStatus, xhr);
     },
     error: function(status) {
       if(timeout) { clearTimeout(timeout); }
-      ajax_loader.lockUi();
-      ajax_loader.removeLoader();
+      loader.lockUi();
+      loader.removeLoader();
     }
   });
 };

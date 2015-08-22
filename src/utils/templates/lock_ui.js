@@ -1,0 +1,1 @@
+module.exports = '<div class="lock-ui"></div>';
