@@ -9,7 +9,6 @@
   },
   "author": "Patrick Eifler",
   "dependencies": {
-    "backbone": "~1.1.2",
     "jquery": "~2.1.4",
     "lodash": "~3.8.0"
   },
