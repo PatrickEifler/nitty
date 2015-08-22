@@ -1,11 +1,11 @@
-var Backbone = require("backbone"),
-    $ = require("jquery"),
+var $ = require("jquery"),
     L = require("lodash"),
     EVENT = require("./event"),
+    dispatcher = require("../index").dispatcher,
     loader = require("../index").loader,
     timeout;
 
-L.extend(exports, Backbone.Events);
+dispatcher.exportTo(exports);
 
 exports.send = function(action, args) {
   return $.ajax(action, {
@@ -27,7 +27,15 @@ exports.send = function(action, args) {
       if(timeout) { clearTimeout(timeout); }
       loader.unlockUi();
       loader.removeLoader();
-      exports.trigger(EVENT.success, result, textStatus, xhr);
+
+      exports.dispatch(
+        EVENT.success,
+        result,
+        {
+          textStatus: textStatus,
+          xhr: xhr
+        }
+      );
     },
     error: function(status) {
       if(timeout) { clearTimeout(timeout); }

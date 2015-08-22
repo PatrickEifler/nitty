@@ -27,6 +27,20 @@ describe('Event Dispatcher Test', function() {
     sinon.assert.calledWith(callback, data);
   });
 
+  it('dispatches all arguments', function() {
+    var callback = sinon.spy();
+    var data = {mydata : "mydata", test: "data"};
+    var additionalData = {data: "additionalData"};
+    var myEvent = "myEvent";
+
+    eventDispatcher.listen(myEvent, callback);
+    sinon.assert.notCalled(callback);
+
+    eventDispatcher.dispatch(myEvent, data, additionalData);
+    sinon.assert.called(callback);
+    sinon.assert.calledWith(callback, data, additionalData);
+  });
+
   it('should stop listening for an event and not dispatch any event afterwards', function() {
     var callback = sinon.spy();
     var data = {data : "mydata"};

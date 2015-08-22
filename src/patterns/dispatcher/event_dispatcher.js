@@ -22,12 +22,16 @@ var EventDispatcher = (function () {
       listeners.splice(callbackIndex, 1);
     },
 
-    dispatch = function(eventName, data) {
+    dispatch = function(eventName, data, optional) {
       var listeners = eventListeners[eventName];
       if(typeof listeners === "undefined") { return; }
 
       for(var i=0, len = listeners.length; i < len; i++) {
-        listeners[i](data);
+        if(optional) {
+          listeners[i](data, optional);
+        } else {
+          listeners[i](data);
+        }
       }
     },
 

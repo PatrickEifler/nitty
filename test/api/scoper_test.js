@@ -20,7 +20,7 @@ describe("Api Scoper Test", function(){
 
   it("should respond to functions", function() {
     var scopedApi = new ApiScoper(api, "agent");
-    assert.notEqual(null, scopedApi.on);
+    assert.notEqual(null, scopedApi.listen);
     assert.notEqual(null, scopedApi.send);
     scopedApi = undefined;
   });
@@ -38,20 +38,21 @@ describe("Api Scoper Test", function(){
     scopedApi = undefined;
   });
 
-  it("should fire on success event with scoped data", function() {
+  it("should fire on success event and returns scoped data", function() {
     var apiScoper = new ApiScoper(api, "agent");
     var agentResponseObject = {agent: {scoped_data :"scoped_data"}};
+    var scopedData = {scoped_data :"scoped_data"};
+    var scopedResultCallback = sinon.spy();
 
     sinon.spy(apiScoper, "processResult");
-
-    api.trigger("success", agentResponseObject);
+    api.listen(apiScoper.selector_success, scopedResultCallback);
+    api.dispatch("success", agentResponseObject, { xhr: "test",textStatus: "test"} );
 
     assert(apiScoper.processResult.calledOnce);
 
-    assert.deepEqual(
-      apiScoper.processResult.getCall(0).args[0],
-      agentResponseObject
-    );
+    sinon.assert.calledWith(apiScoper.processResult, agentResponseObject);
+
+    sinon.assert.calledWith(scopedResultCallback, scopedData);
 
     apiScoper.processResult.restore();
   });
@@ -61,8 +62,28 @@ describe("Api Scoper Test", function(){
     var someReponse = {test: "test"};
     var callback = sinon.spy();
 
-    apiScoper.api.trigger("success", someReponse);
-    apiScoper.api.on("success", callback);
+    apiScoper.api.dispatch("success", someReponse,  { xhr: "test",textStatus: "test"});
+    apiScoper.api.listen("success", callback);
+
     sinon.assert.notCalled(callback);
+  });
+
+  it("should fire on success event if no scope was given", function() {
+    var apiScoper = new ApiScoper(api);
+    var someReponse = {test: "test"};
+    var caller = sinon.spy();
+    sinon.spy(apiScoper, "processResult");
+
+    api.listen("_success_response_", caller);
+    apiScoper.api.dispatch("success", someReponse,  { xhr: "test",textStatus: "test"});
+
+    assert(apiScoper.processResult.calledOnce);
+
+    sinon.assert.calledWith(apiScoper.processResult, someReponse);
+
+    assert(caller.calledOnce);
+    sinon.assert.calledWith(caller, someReponse);
+
+    apiScoper.processResult.restore();
   });
 });
