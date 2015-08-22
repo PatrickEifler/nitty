@@ -1,19 +1,19 @@
 # nitty
-A package providing helpers for client-side restful api implementations
+A package providing helpers for client-side restful api implementations written in ES5.
 
 ### Installation
 npm install nitty
 
-
 ### Example usage
-var Ctrl = require("nitty").ctrl;
-var ctrl = Ctrl.createInstance(...);
+
+var ctrl = require("nitty").ctrl; ctrl.createInstance(...);
+
 
 ### Base Modules
 
 #### Ctrl
 
-A controller class which wires up an api, a signal and its context, as well a mapping function.
+A controller class which wires up an api, a signal and its context, as well as a mapping function.
 The api is listening to a given scope. If the scope event is dispatched, the setter function of the 
 signal context is called and returns the mapped data, which can be in turn remapped or
 just delegated within a presenter(See the test/base/base_integration_test for more details).
@@ -43,7 +43,7 @@ called the subject, maintains a list of its dependents, called observers,
 and notifies them automatically of any state changes, usually by calling
 one of their methods. It is mainly used to implement distributed event handling systems.
 
-#### Singleton Factory
+#### Singleton
 Always returns the same instance of an instance object.
 
 ### Query Modules - A way to implement complex filters
