@@ -13,7 +13,7 @@ var ctrl = require("nitty").ctrl; ctrl.createInstance(...);
 
 #### Ctrl
 
-A controller class which wires up an api, a signal and its context, as well a mapping function.
+A controller class which wires up an api, a signal and its context, as well as a mapping function.
 The api is listening to a given scope. If the scope event is dispatched, the setter function of the 
 signal context is called and returns the mapped data, which can be in turn remapped or
 just delegated within a presenter(See the test/base/base_integration_test for more details).
