@@ -2,12 +2,16 @@
   "name": "nitty",
   "version": "1.0.0",
   "description": "A package providing helpers for client-side restful api implementations",
+  "author": {
+    "name": "Patrick Eifler",
+    "email": "patrickeifler@gmail.com"
+  },
+  "license": "GPL-1.0+",
   "main": "src/index.js",
   "scripts": {
     "lint": "eslint src/",
     "test": "mocha test/ --recursive --reporter dot"
   },
-  "author": "Patrick Eifler",
   "dependencies": {
     "jquery": "~2.1.4",
     "lodash": "~3.8.0"
@@ -18,5 +22,6 @@
     "chai": "*",
     "mocha": "~2.2.4",
     "sinon": "^1.14.1"
-  }
+  },
+  "readme": "This package provides a basic structure of modules to implement a client interface to a restful server"
 }

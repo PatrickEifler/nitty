@@ -9,8 +9,7 @@ describe("Api Test", function () {
       return {set_data: data};
     };
     var scope = "api_scope";
-    var events = { update: "update_api_scope"};
-    this.apiInstance = Api.createInstance(scope, events);
+    this.apiInstance = Api.createInstance(scope);
   });
 
   afterEach(function() {
@@ -26,7 +25,7 @@ describe("Api Test", function () {
   it("fires the given callback on update event", function() {
     var callback = sinon.spy();
     this.apiInstance.onUpdateDo(callback);
-    dispatcher.dispatch("update_api_scope", {some_data: "data"});
+    dispatcher.dispatch("success_api_scope", {some_data: "data"});
     sinon.assert.calledOnce(callback);
     sinon.assert.calledWith(callback, {some_data: "data"});
   });

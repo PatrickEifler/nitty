@@ -10,8 +10,7 @@ var dispatcher = require("../../src/patterns/dispatcher/event_dispatcher");
 describe("Base Integration Test", function () {
 
   var api = Api.createInstance(
-    "integration",
-    { update: "update"}
+    "integration"
   );
 
   var updatedSignal;
@@ -43,7 +42,7 @@ describe("Base Integration Test", function () {
     assert.strictEqual(this.ctrl.signal.getNumberOfListeners(),1);
     assert.isTrue(this.ctrl.signal.hasListener(context.set, context));
 
-    dispatcher.dispatch("update", { integration: {passed: true} });
+    dispatcher.dispatch("success_integration", { integration: {passed: true} });
 
     assert.deepEqual(objectToBePassedToView, {passed: true});
   });

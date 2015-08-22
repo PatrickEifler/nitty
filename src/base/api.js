@@ -2,9 +2,11 @@ var scoper = require("../api/scoper"),
     dispatcher = require("../patterns/dispatcher/event_dispatcher");
 
 var Api = (function () {
-  var _Api = function (scope, events) {
+  var _Api = function (scope) {
     this.scope = scope;
-    this.events = events;
+    this.events = {
+      update: "success_"+scope
+    };
   };
 
   _Api.prototype.onUpdateDo = function (callback) {
