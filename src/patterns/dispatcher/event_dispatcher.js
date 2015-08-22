@@ -38,13 +38,21 @@ var EventDispatcher = (function () {
       for(var i=0, len = listeners.length; i < len; i++) {
         listeners[i](data[selector]);
       }
+    },
+
+    exportTo = function (obj) {
+      obj.listen = listen;
+      obj.unlisten = unlisten;
+      obj.dispatch = dispatch;
+      obj.scopedDispatch = scopedDispatch;
     };
 
   return {
     listen: listen,
     unlisten: unlisten,
     dispatch: dispatch,
-    scopedDispatch: scopedDispatch
+    scopedDispatch: scopedDispatch,
+    exportTo: exportTo
   };
 }());
 
@@ -52,5 +60,6 @@ module.exports = {
   listen: EventDispatcher.listen,
   unlisten: EventDispatcher.unlisten,
   dispatch: EventDispatcher.dispatch,
-  scopedDispatch: EventDispatcher.scopedDispatch
+  scopedDispatch: EventDispatcher.scopedDispatch,
+  exportTo: EventDispatcher.exportTo
 };

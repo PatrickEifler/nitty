@@ -22,9 +22,9 @@ describe('Event Dispatcher Test', function() {
     eventDispatcher.listen(myEvent, callback);
     sinon.assert.notCalled(callback);
 
-    eventDispatcher.dispatch(myEvent, data.mydata);
+    eventDispatcher.dispatch(myEvent, data);
     sinon.assert.called(callback);
-    sinon.assert.calledWith(callback, data.mydata);
+    sinon.assert.calledWith(callback, data);
   });
 
   it('should stop listening for an event and not dispatch any event afterwards', function() {
@@ -96,5 +96,14 @@ describe('Event Dispatcher Test', function() {
     sinon.assert.calledWith(secondCallback, dataOne);
     sinon.assert.calledWith(thirdCallback, dataOne);
 
+  });
+
+  it("exports itself to another object", function () {
+    var obj = {};
+    eventDispatcher.exportTo(obj);
+    assert.isFunction(obj.dispatch);
+    assert.isFunction(obj.listen);
+    assert.isFunction(obj.unlisten);
+    assert.isFunction(obj.scopedDispatch);
   });
 });
