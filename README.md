@@ -1,13 +1,13 @@
 # nitty
-A package providing helpers for client-side restful api implementations
+A package providing helpers for client-side restful api implementations written in ES5.
 
 ### Installation
 npm install nitty
 
-
 ### Example usage
-var Ctrl = require("nitty").ctrl;
-var ctrl = Ctrl.createInstance(...);
+
+var ctrl = require("nitty").ctrl; ctrl.createInstance(...);
+
 
 ### Base Modules
 
@@ -43,7 +43,7 @@ called the subject, maintains a list of its dependents, called observers,
 and notifies them automatically of any state changes, usually by calling
 one of their methods. It is mainly used to implement distributed event handling systems.
 
-#### Singleton Factory
+#### Singleton
 Always returns the same instance of an instance object.
 
 ### Query Modules - A way to implement complex filters
