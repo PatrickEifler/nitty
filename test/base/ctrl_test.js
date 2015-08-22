@@ -4,24 +4,25 @@ var dispatcher = require("../../src/patterns/dispatcher/event_dispatcher");
 var Ctrl = require("../../src/base/ctrl");
 
 describe("Ctrl Test", function () {
+  var context = {
+    set: function(data) {
+      return data;
+    }
+  };
+  var updatedSignal;
+  var api = {
+    onUpdateDo: function(updateCallback) {
+      dispatcher.listen(
+        "update_event",
+        updateCallback
+      );
+    }
+  };
+  var dataMapper = function(params){
+    return params;
+  };
+
   beforeEach(function() {
-    var context = {
-      set: function(data) {
-        return data;
-      }
-    };
-    var updatedSignal;
-    var api = {
-      onUpdateDo: function(updateCallback) {
-        dispatcher.listen(
-          "update_event",
-          updateCallback
-        );
-      }
-    };
-    var dataMapper = function(params){
-      return params;
-    };
 
     sinon.spy(api, "onUpdateDo");
     sinon.spy(context, "set");
@@ -34,7 +35,10 @@ describe("Ctrl Test", function () {
   });
 
   afterEach(function() {
+    this.ctrlInstance.dataMapper.restore();
     this.ctrlInstance = undefined;
+    context.set.restore();
+    api.onUpdateDo.restore();
   });
 
   it("creates an instance", function() {

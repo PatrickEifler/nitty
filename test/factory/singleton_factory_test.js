@@ -6,8 +6,8 @@ describe("Singleton factory Test", function(){
     var Constr = function(id) {
       this.id = id;
     };
-    var instance = singletonFactory.create_instance(Constr);
-    var sameInstance = singletonFactory.create_instance(Constr);
+    var instance = singletonFactory.createInstance(Constr);
+    var sameInstance = singletonFactory.createInstance(Constr);
 
     assert.strictEqual(instance, sameInstance);
     assert.strictEqual(instance.id, sameInstance.id);

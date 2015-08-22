@@ -63,7 +63,7 @@ var Query = (function() {
     }
   };
 
-  return singleton_factory.create_instance(QueryConstr);
+  return singleton_factory.createInstance(QueryConstr);
 }());
 
 
