@@ -1,4 +1,5 @@
-# nitty
+# nitty [![Build Status](https://travis-ci.org/PatrickEifler/nitty.svg?branch=master)](https://travis-ci.org/PatrickEifler/nitty)
+
 A package providing helpers for client-side restful api implementations written in ES5.
 
 ### Installation
