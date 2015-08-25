@@ -3,12 +3,16 @@
 A package providing helpers for the implementation of client-side web services written in ES5.
 
 ### Installation
-npm install nitty
+
+```
+$ npm install nitty
+```
 
 ### Example usage
 
+```js
 var ctrl = require("nitty").ctrl; ctrl.createInstance(...);
-
+```
 
 ### Base Modules
 
