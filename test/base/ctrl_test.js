@@ -11,6 +11,7 @@ describe("Ctrl Test", function () {
   };
   var updatedSignal;
   var api = {
+    scope: "BaseCtrlTest",
     onUpdateDo: function(updateCallback) {
       dispatcher.listen(
         "update_event",
@@ -61,8 +62,8 @@ describe("Ctrl Test", function () {
 
     sinon.assert.calledOnce(this.ctrlInstance.api.onUpdateDo);
     sinon.assert.calledOnce(this.ctrlInstance.dataMapper);
-    sinon.assert.calledWith(this.ctrlInstance.dataMapper, {test: "test"});
-    sinon.assert.calledWith(this.ctrlInstance.context.set, {test: "test"});
+    sinon.assert.calledWith(this.ctrlInstance.dataMapper, {scope: "BaseCtrlTest", test: "test"});
+    sinon.assert.calledWith(this.ctrlInstance.context.set, {scope: "BaseCtrlTest", test: "test"});
   });
 
 });

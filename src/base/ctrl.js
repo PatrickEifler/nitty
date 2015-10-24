@@ -55,9 +55,10 @@ var Ctrl = (function() {
 
     registerToApiUpdateStream: function() {
       var self = this,
+          apiScope = self.api.scope,
       updateCallback = function(params) {
         self.dispatchUpdatedSignal(
-          self.dataMapper(params)
+          self.dataMapper(L.merge(params, {scope: apiScope}))
         );
       };
 
