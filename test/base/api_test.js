@@ -22,6 +22,10 @@ describe("Api Test", function () {
     assert.property(this.apiInstance, "events");
   });
 
+  it("should have a scope property", function() {
+    assert.strictEqual(this.apiInstance.scope, "api_scope");
+  });
+
   it("fires the given callback on update event", function() {
     var callback = sinon.spy();
     this.apiInstance.onUpdateDo(callback);
