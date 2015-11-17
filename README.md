@@ -85,17 +85,16 @@ var ctrl = Ctrl.createInstance(
 /* Integration Test
  *
  * The Signal should be wired up with the Context
- * 
- * assert.strictEqual(this.ctrl.signal.getNumberOfListeners(),1);
- * assert.isTrue(this.ctrl.signal.hasListener(context.set, context));
- *
+*/
+assert.strictEqual(this.ctrl.signal.getNumberOfListeners(),1);
+assert.isTrue(this.ctrl.signal.hasListener(context.set, context));
+/* 
  * The Api is scoped to integration and registered to success_integration event.
  * The updated data { integration: {passed: true} } was propagated to the Context.
  * The toBePassedToView object was updated in the Context Set Callback. 
- * 
- * dispatcher.dispatch("success_integration", { integration: {passed: true} });
- * assert.deepEqual(toBePassedToView, {passed: true});
-*/
+*/ 
+dispatcher.dispatch("success_integration", { integration: {passed: true} });
+assert.deepEqual(toBePassedToView, {passed: true});
 
 ```
 ### Documentation
