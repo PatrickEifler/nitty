@@ -8,7 +8,7 @@ A package providing nitty-gritty helpers for the implementation of client-side w
 $ npm install nitty
 ```
 
-### Example usage
+### How to use nitty
 
 ```js
 // Require nitty components
@@ -97,7 +97,9 @@ dispatcher.dispatch("success_integration", { integration: {passed: true} });
 assert.deepEqual(toBePassedToView, {passed: true});
 
 ```
-### Documentation
+### Description
+
+### What about all these components?
 
 ### Base Modules
 
@@ -127,7 +129,7 @@ doesn't rely on strings to broadcast/subscribe to events.
 #### Event Dispatcher
 Event Emitter/Dispatcher Pattern
 
-### Subject (Observer Pattern)
+#### Subject (Observer Pattern)
 The observer pattern is a software design pattern in which an object,
 called the subject, maintains a list of its dependents, called observers,
 and notifies them automatically of any state changes, usually by calling
